@@ -1,0 +1,17 @@
+<ArrayList>
+    <item>
+        <age>17</age>
+        <lastName>Aliyev</lastName>
+        <firstName>Ali</firstName>
+    </item>
+    <item>
+        <age>20</age>
+        <lastName>Valiyev</lastName>
+        <firstName>Vali</firstName>
+    </item>
+    <item>
+        <age>26</age>
+        <lastName>Boltayev</lastName>
+        <firstName>Bolta</firstName>
+    </item>
+</ArrayList>

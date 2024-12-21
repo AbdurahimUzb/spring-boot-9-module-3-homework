@@ -1,0 +1,22 @@
+[
+  {
+    "color": "red",
+    "type": "Ferrari"
+  },
+  {
+    "color": "yellow",
+    "type": "Porsche"
+  },
+  {
+    "color": "white",
+    "type": "BMW"
+  },
+  {
+    "color": "black",
+    "type": "Mercedes"
+  },
+  {
+    "color": "green",
+    "type": "Lamborghini"
+  }
+]
