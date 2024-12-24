@@ -1,1 +1,1 @@
-Uy ishini Test Pageiga yozilgan!
+Uy ishi Test Pageiga yozilgan!
