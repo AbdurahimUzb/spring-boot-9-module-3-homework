@@ -1,11 +1,15 @@
 ### GET all users
-GET localhost:8080/
+GET localhost:8080/authUsers
 
 ### GET find by Id user
-GET localhost:8080/1
+GET localhost:8080/authUsers/1
+
+### GET users pageable
+GET http://localhost:8080/authUsers?page=0&size=2
+
 
 ### POST save new user
-POST localhost:8080/
+POST localhost:8080/authUsers
 Content-Type: application/json
 
 {
@@ -14,16 +18,15 @@ Content-Type: application/json
 }
 
 ### PUT update with Id user
-PUT localhost:8080/
+PUT localhost:8080/authUsers/1
 Content-Type: application/json
 
 {
-  "id": 1,
   "username": "Example",
   "password": "12345678"
 }
 
 ### DELETE by Id
-DELETE localhost:8080/2
+DELETE localhost:8080/authUsers/2
 
 
