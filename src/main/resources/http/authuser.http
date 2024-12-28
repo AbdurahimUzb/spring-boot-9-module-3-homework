@@ -1,0 +1,29 @@
+### GET all users
+GET localhost:8080/
+
+### GET find by Id user
+GET localhost:8080/1
+
+### POST save new user
+POST localhost:8080/
+Content-Type: application/json
+
+{
+  "username": "New User",
+  "password": "abcdefghi"
+}
+
+### PUT update with Id user
+PUT localhost:8080/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "Example",
+  "password": "12345678"
+}
+
+### DELETE by Id
+DELETE localhost:8080/2
+
+
