@@ -1,0 +1,16 @@
+### GET show all users
+GET localhost:8080/user/
+
+### POST add new user
+POST localhost:8080/user/register
+Content-Type: application/json
+
+{
+  "firstName": "Ali",
+  "lastName": "Aliyev",
+  "password": "123",
+  "role": "ROLE_ADMIN"
+}
+
+### DELETE with ID
+DELETE localhost:8080/user/delete/

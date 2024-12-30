@@ -1,0 +1,18 @@
+### GET all items
+GET localhost:8080/item/show
+Authorization: Basic YWRtaW5AbWFpbC5jb206MTIz
+
+### GET find with ID item
+GET localhost:8080/item/get/1
+Authorization: Basic YWRtaW5AbWFpbC5jb206MTIz
+
+### POST save new item
+POST localhost:8080/item/save
+Content-Type: application/json
+Authorization: Basic YWRtaW5AbWFpbC5jb206MTIz
+
+{
+  "itemName": "Non",
+  "itemDescription": "Oziq ovqat",
+  "price": 3000.0
+}

@@ -1,0 +1,13 @@
+### GET all storegs
+GET localhost:8080/store/show
+
+###
+POST localhost:8080/store/save
+Content-Type: application/json
+Authorization: Basic dXNlckBtYWlsLmNvbToxMjM=
+
+{
+  "name": "Mini Market",
+  "description": "Qo'shnimning do'koni",
+  "email": "market@gamil.com"
+}

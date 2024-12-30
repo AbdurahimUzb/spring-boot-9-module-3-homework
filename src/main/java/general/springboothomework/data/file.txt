@@ -1,0 +1,10 @@
+Authorization: Basic YWRtaW5AbWFpbC5jb206MTIz
+
+"password": "123"
+"email": "admin@mail.com"
+
+
+Authorization: Basic dXNlckBtYWlsLmNvbToxMjM=
+
+"password": "123"
+"email": "user@mail.com"
