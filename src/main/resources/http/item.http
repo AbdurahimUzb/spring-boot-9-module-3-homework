@@ -1,15 +1,18 @@
 ### GET all items
 GET localhost:8080/item/show
-Authorization: Basic YWRtaW5AbWFpbC5jb206MTIz
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTczNTYyMDk4NywiaXNzIjoiaHR0cHM6Ly9vbmxpbmUucGRwLnV6IiwiZXhwIjoxNzM1NjIxNTg3fQ.uU3Capv8_TmW-pSYnfz8S6P0HlNSmIqZMWWLRvSzvCw
+
 
 ### GET find with ID item
 GET localhost:8080/item/get/1
-Authorization: Basic YWRtaW5AbWFpbC5jb206MTIz
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTczNTYxODIyNCwiaXNzIjoiaHR0cHM6Ly9vbmxpbmUucGRwLnV6IiwiZXhwIjoxNzM1NjE4ODI0fQ.yQgz7liermpO0b1zr_dxl1ugDBNyfMYQJYrmn-R6sAI
+
 
 ### POST save new item
 POST localhost:8080/item/save
 Content-Type: application/json
-Authorization: Basic YWRtaW5AbWFpbC5jb206MTIz
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTczNTYxODIyNCwiaXNzIjoiaHR0cHM6Ly9vbmxpbmUucGRwLnV6IiwiZXhwIjoxNzM1NjE4ODI0fQ.yQgz7liermpO0b1zr_dxl1ugDBNyfMYQJYrmn-R6sAI
+
 
 {
   "itemName": "Non",

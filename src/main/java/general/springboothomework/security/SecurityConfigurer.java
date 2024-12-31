@@ -2,8 +2,9 @@ package general.springboothomework.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import general.springboothomework.dto.ErrorDto;
+import general.springboothomework.token.JwtTokenFilter;
+import general.springboothomework.token.JwtTokenGenerator;
 import jakarta.servlet.ServletOutputStream;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -12,15 +13,16 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,8 +31,15 @@ import java.util.List;
 @EnableMethodSecurity
 public class SecurityConfigurer {
 
-    @Autowired
-    private ObjectMapper jacksonObjectMapper;
+    private final ObjectMapper jacksonObjectMapper;
+    private final JwtTokenGenerator jwtTokenGenerator;
+    private final UserDetailsService userDetailsService;
+
+    public SecurityConfigurer(ObjectMapper jacksonObjectMapper, JwtTokenGenerator jwtTokenGenerator, UserDetailsService userDetailsService) {
+        this.jacksonObjectMapper = jacksonObjectMapper;
+        this.jwtTokenGenerator = jwtTokenGenerator;
+        this.userDetailsService = userDetailsService;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -43,17 +52,17 @@ public class SecurityConfigurer {
         http.cors(AbstractHttpConfigurer::disable);
         http.csrf(AbstractHttpConfigurer::disable);
 
+        http.addFilterBefore(new JwtTokenFilter(jwtTokenGenerator, userDetailsService), UsernamePasswordAuthenticationFilter.class);
+
         http.authorizeHttpRequests(secure -> secure
-//                .requestMatchers(HttpMethod.GET, "/**").permitAll()
-//                        .requestMatchers("/user/register", "/user/").permitAll()
-                        .requestMatchers("/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/**").permitAll()
+                        .requestMatchers("/api/token").permitAll()
                         .anyRequest().authenticated()
         );
 
-        http.exceptionHandling(exe -> {
-            exe
-                    .authenticationEntryPoint(authenticationEntryPoint());
-        });
+        http.exceptionHandling(exe -> exe
+                .authenticationEntryPoint(authenticationEntryPoint()));
+
         http.httpBasic(Customizer.withDefaults()
         );
 

@@ -1,5 +1,6 @@
 package general.springboothomework.token;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -25,9 +26,34 @@ public class JwtTokenGenerator {
                 .compact();
     }
 
+    public boolean validateToken(@NonNull String token) {
+        try {
+            Claims claims = getClaims(token);
+            Date date = claims.getExpiration();
+            return !date.after(new Date());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public String getUserName(@NonNull String token) {
+        Claims claims = getClaims(token);
+        return claims.getSubject();
+    }
+
     private Key signKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SHA_256);
         return Keys.hmacShaKeyFor(keyBytes); // HMAC uchun mos kalit
+    }
+
+
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(signKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
 

@@ -1,16 +1,30 @@
 ### GET show all users
 GET localhost:8080/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTczNTYxOTQzNiwiaXNzIjoiaHR0cHM6Ly9vbmxpbmUucGRwLnV6IiwiZXhwIjoxMDQxMzcxNjYyMTA3NjAwfQ._TeX0yaotHZHaMa_9UygSTCMDsirfLC3YDmMO6u6fJM
+
 
 ### POST add new user
 POST localhost:8080/user/register
 Content-Type: application/json
 
+
 {
   "firstName": "Ali",
   "lastName": "Aliyev",
   "password": "123",
+  "email": "ali@mail.com",
   "role": "ROLE_ADMIN"
 }
 
 ### DELETE with ID
 DELETE localhost:8080/user/delete/
+
+
+###
+POST localhost:8080/api/token
+Content-Type: application/json
+
+{
+  "password": "123",
+  "email": "admin@mail.com"
+}

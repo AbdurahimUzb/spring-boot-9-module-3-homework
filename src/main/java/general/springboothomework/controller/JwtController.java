@@ -25,7 +25,7 @@ public class JwtController {
         this.jwtTokenGenerator = jwtTokenGenerator;
     }
 
-    @PostMapping("/")
+    @PostMapping("/token")
     public String hello(@RequestBody TokenRequest token) {
         String string = token.email();
         String password = token.password();
