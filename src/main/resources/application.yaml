@@ -1,0 +1,18 @@
+yaml:
+  per:
+    id: ${random.long(10,100)}
+    name: John
+    age: ${random.int(40)}
+
+  persons:
+    - id: ${random.long(100)}
+      name: Javohir
+      age: ${random.int(40)}
+
+    - id: ${random.long(100)}
+      name: Ali
+      age: ${random.int(40)}
+
+    - id: ${random.long(100)}
+      name: Eshmat
+      age: ${random.int(40)}
